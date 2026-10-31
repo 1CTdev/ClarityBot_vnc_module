@@ -1,0 +1,40 @@
+[package]
+name = "redirector_injection"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile]
+[profile.release]
+opt-level = 3
+debug = 0
+strip = "symbols"
+
+[dependencies]
+iced-x86 = "1.21.0"
+inject = {path = "../inject"}
+detour = {path = "../detour"}
+win_utils = {path = "../win_utils"}
+[dependencies.windows-sys]
+version = "0.60.2"
+features = [
+"Win32_Storage_FileSystem",
+"Win32_System_LibraryLoader",
+"Win32_System_Memory",
+"Win32_System_Kernel",
+"Win32_System_Threading",
+"Wdk_System_Threading",
+"Win32_System_IO",
+"Win32_System_Diagnostics_Debug",
+"Win32_System_Console",
+"Win32_System_SystemServices",
+"Win32_UI_WindowsAndMessaging",
+"Win32_System_Environment",
+"Wdk_Foundation",
+"Wdk_Storage_FileSystem",
+"Win32_Security",
+"Win32_System_Diagnostics",
+"Win32_UI_Shell"
+]

@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug app (with vnc_module rebuild)",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--package=app",
+                    "--bin=app"
+                ],
+                "filter": {
+                    "name": "app",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "build-vnc-module"
+        },
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Debug app (Windows)",
+            "program": "${workspaceFolder}/target/debug/app.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal",
+            "preLaunchTask": "build-vnc-module"
+        }
+    ]
+}

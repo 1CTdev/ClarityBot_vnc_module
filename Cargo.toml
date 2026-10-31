@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "app",
+    "vnc_module",
+    "redirector_injection",
+    "inject", "detour", "win_utils",
+]
+
+resolver = "2"

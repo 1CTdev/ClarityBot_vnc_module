@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-vnc-module",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["build", "--package", "vnc_module"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "build-app",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["build", "--package", "app"],
+            "group": "build",
+            "dependsOn": "build-vnc-module",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "run-app-with-rebuild",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["run", "--package", "app"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "build-vnc-module",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "clean-and-build-all",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["clean"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": []
+        }
+    ]
+}
